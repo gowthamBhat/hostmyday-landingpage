@@ -3,7 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
+      rel="stylesheet"
+    />
     <title>HostMyDay - Launching Soon</title>
+
     <style>
       body {
         margin: 0;
@@ -21,17 +28,24 @@
         color: #333;
         padding: 20px;
       }
-      header h1 {
+      #heading-name {
+        font-family: 'Nanum Pen Script', cursive;
+        font-weight: 700;
+        font-size: larger;
+        font-style: normal;
+
         font-size: 4rem;
-        font-weight: bold;
+        /* font-weight: bold; */
         margin: 0;
-        color: #ff6b6b;
+        color: tomato;
+        /* #ff6b6b; */
         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
       }
-      header p {
-        font-size: 1.2rem;
+      #tag-line {
+        font-size: 1rem;
+        font-weight: bold;
         color: #fff;
-        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         margin: 10px 0 30px;
       }
       .countdown {
@@ -102,8 +116,8 @@
   </head>
   <body>
     <header>
-      <h1>HostMyDay</h1>
-      <p>Moments in Making</p>
+      <h1 id="heading-name">HostMyDay</h1>
+      <p id="tag-line">Moments in Making</p>
     </header>
     <section class="countdown">
       <div>
