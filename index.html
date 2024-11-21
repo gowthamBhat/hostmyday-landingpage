@@ -53,14 +53,17 @@
       #heading-name {
         font-family: 'Nanum Pen Script', cursive;
         font-weight: 700;
-        font-size: larger;
-        font-style: normal;
-
         font-size: 4rem;
         margin: 0;
         color: tomato;
         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        text-transform: lowercase; /* Make the whole text lowercase */
       }
+
+      #heading-name span {
+        color: white; /* Make "my" white */
+      }
+
       #tag-line {
         font-size: 1rem;
         font-weight: bold;
@@ -137,7 +140,8 @@
   </head>
   <body>
     <header>
-      <h1 id="heading-name">HostMyDay</h1>
+      <h1 id="heading-name">Host<span>My</span>Day</h1>
+      <!-- "my" is in white -->
       <p id="tag-line">Moments in Making</p>
     </header>
     <section>
