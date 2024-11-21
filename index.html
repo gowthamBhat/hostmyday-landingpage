@@ -12,22 +12,44 @@
     <title>HostMyDay - Launching Soon</title>
 
     <style>
+      html,
       body {
         margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; /* Prevent scrolling */
+      }
+
+      body {
         font-family: 'Arial', sans-serif;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        min-height: 100vh;
+        height: 100vh; /* Ensure it fits the screen */
         text-align: center;
         background: linear-gradient(135deg, #ffddc1, #fecdcc);
         background-image: url('https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
         background-size: cover;
         background-position: center;
         color: #333;
+        position: relative; /* Needed for pseudo-element */
         padding: 20px;
       }
+
+      body::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: inherit; /* Inherit the body's background */
+        filter: blur(5px); /* Apply the blur effect */
+        z-index: -1; /* Place it behind the content */
+      }
+
       #heading-name {
         font-family: 'Nanum Pen Script', cursive;
         font-weight: 700;
@@ -35,10 +57,8 @@
         font-style: normal;
 
         font-size: 4rem;
-        /* font-weight: bold; */
         margin: 0;
         color: tomato;
-        /* #ff6b6b; */
         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
       }
       #tag-line {
@@ -48,26 +68,30 @@
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         margin: 10px 0 30px;
       }
-      .countdown {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin: 20px 0;
-      }
-      .countdown div {
-        background: rgba(255, 255, 255, 0.8);
-        padding: 10px 15px;
-        border-radius: 5px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-      .countdown div span {
-        display: block;
-        font-size: 1.5rem;
+
+      /* Launching Soon Section */
+      .launching-soon {
+        font-size: 2.5rem;
         font-weight: bold;
+        color: #fff;
+        text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+        margin: 20px 0;
+        animation: fadeInOut 2s infinite ease-in-out; /* Updated animation for repeat effect */
       }
-      .countdown div label {
-        font-size: 0.8rem;
+
+      /* Keyframes for fade in and out */
+      @keyframes fadeInOut {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
       }
+
       form {
         margin: 20px 0;
       }
@@ -105,9 +129,6 @@
         header h1 {
           font-size: 3rem;
         }
-        .countdown div span {
-          font-size: 1.2rem;
-        }
         form input {
           width: 200px;
         }
@@ -119,23 +140,9 @@
       <h1 id="heading-name">HostMyDay</h1>
       <p id="tag-line">Moments in Making</p>
     </header>
-    <section class="countdown">
-      <div>
-        <span id="days">00</span>
-        <label>Days</label>
-      </div>
-      <div>
-        <span id="hours">00</span>
-        <label>Hours</label>
-      </div>
-      <div>
-        <span id="minutes">00</span>
-        <label>Minutes</label>
-      </div>
-      <div>
-        <span id="seconds">00</span>
-        <label>Seconds</label>
-      </div>
+    <section>
+      <!-- Updated Text with Animation -->
+      <div class="launching-soon">Launching Soon...</div>
     </section>
     <form>
       <input type="email" placeholder="Enter your email" required />
@@ -147,32 +154,5 @@
       <a href="#">Twitter</a>
     </div>
     <footer>&copy; 2024 HostMyDay. All rights reserved.</footer>
-
-    <script>
-      // Countdown Timer Script
-      const launchDate = new Date('2024-12-01T00:00:00').getTime()
-      const updateCountdown = () => {
-        const now = new Date().getTime()
-        const gap = launchDate - now
-
-        const second = 1000
-        const minute = second * 60
-        const hour = minute * 60
-        const day = hour * 24
-
-        document.getElementById('days').textContent = Math.floor(gap / day)
-        document.getElementById('hours').textContent = Math.floor(
-          (gap % day) / hour
-        )
-        document.getElementById('minutes').textContent = Math.floor(
-          (gap % hour) / minute
-        )
-        document.getElementById('seconds').textContent = Math.floor(
-          (gap % minute) / second
-        )
-      }
-
-      setInterval(updateCountdown, 1000)
-    </script>
   </body>
 </html>
